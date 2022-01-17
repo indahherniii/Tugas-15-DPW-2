@@ -21,6 +21,11 @@ class UserController extends Controller{
         $user->email = request('email');
         $user->password = request('password');
         $user->jenis_kelamin = 2;
+        if(request('level') == 'admin'){
+            $user->level = 1; 
+        } else{
+            $user->level = 2; 
+        }
         $user->save();
 
         $userdetail = new UserDetail;
@@ -31,6 +36,11 @@ class UserController extends Controller{
         return redirect('admin/user')->with('success', 'Data berhasil ditambahkan');
     }
     function show(User $user){
+
+        $loggedUser = request()->user();
+        
+        if($loggedUser->id != $user->id) return abort(404);
+
         $data['user'] = $user;
         return view('user.show', $data);
     }

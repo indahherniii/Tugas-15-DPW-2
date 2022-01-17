@@ -37,6 +37,12 @@
                                 @include('template.utils.errors', ['item'=>'no_handphone'])
                                 <input type="text" name="no_handphone" id="" class="form-control">
                             </div>
+                            <div class="form-group">
+                                <label for="" class="control-label">Level (tulis di field "admin" jika anda adalah admin,
+                                    jika bukan tulis kata acak)</label>
+                                @include('template.utils.errors', ['item' => 'level'])
+                                <input type="text" name="level" id="" class="form-control">
+                            </div>
                             <button class="btn btn-dark float-right"><i class="fa fa-save"> Simpan</i></button>
                         </form>
                     </div>
